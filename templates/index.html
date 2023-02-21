@@ -1,0 +1,671 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block extra_head %}
+<link rel="stylesheet" href="{% static 'css/virtual-select.min.css' %}">
+<style>
+    .form-select[multiple], .form-select[size]:not([size="1"]) {
+        padding-right: 0rem;
+        background-image: none;
+    }
+    .form-select {
+        display: block;
+        width: 100%;
+        padding: 0;
+        font-size: 1rem;
+        font-weight: 400;
+        line-height: 1.5;
+        color: #212529;
+        background-color: #fff;
+        background-repeat: no-repeat;
+        background-position: right 0.75rem center;
+        background-size: 16px 12px;
+        border: 1px solid #ced4da;
+        border-radius: 0.25rem;
+        transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+        appearance: none;
+    }
+</style>
+{% endblock %}
+
+{% block content%}
+    <nav class="navbar navbar-dark bg-dark navbar-expand-lg">
+        <div class="container-fluid">
+            {% if request.user.is_superuser %}
+            <button type="button" class="btn btn-warning mx-1" data-bs-toggle="modal" data-bs-target="#myModal">
+                <span class="btn-label"><i class="fa-solid fa-plus"></i></span>
+                <strong class="text-dark">Add File</strong>
+            </button>
+            {% endif %}
+
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item me-3">
+                        <!-- SEARCH TAG BUTTON -->
+                        <form action="{% url 'search' %}" method="get">
+                            <div class="input-group">
+                                <input type="text" class="form-control" placeholder="Tag name" aria-label="tag-name" aria-describedby="btn-tag-name" name="search_text">
+                                <button class="btn btn-warning" type="submit">
+                                    <span class="btn-label"><i class="fa-sharp fa-solid fa-magnifying-glass"></i></span>
+                                    Search
+                                </button>
+                            </div>
+                        </form>
+                    </li>
+                    <li class="nav-item me-3">
+                        <a class="nav-link" href="#">
+                            <i class="fa-solid fa-circle-user"></i>
+                            <strong>{{ user }}</strong>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'logout' %}">
+                            <i class="fa-solid fa-right-from-bracket"></i> Logout
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+
+    <div class="container-fluid row my-4">
+        <!-- LEFT PART -->
+        <div class="d-flex justify-content-start">
+            <div class="mt-2 col-6">
+
+                <i id="display_bars" class="fa-solid fa-bars fa-lg mb-4" style="cursor: pointer;"> Hide Table</i>
+
+                <!-- FILES NAMES LIST -->
+                <table id="table_id" class="display">
+                    <thead>
+                        <tr>
+                            <th>SL</th>
+                            <th>File Name</th>
+                            {% if request.user.is_superuser %}
+                            <th>Users</th>
+                            <th>Actions</th>
+                            {% endif %}
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for file_name, users in all_files %}
+                        <tr>
+                            <th width="10%">{{ forloop.counter }}</th>
+                            <td width="10%;">
+                                <button type="button" class="btn btn-link btn-sm editFile text-decoration-none" id="editFile_{{ forloop.counter }}" data-bs-target="#myEditModal" data-filename="{{ file_name }}" data-username="{{request.user}}">{{ file_name }}</button>
+                            </td>
+                            {% if request.user.is_superuser %}
+                            <td>
+                                {% for user in users %}
+                                <button type="button" class="btn btn-md btn-link compareUserFile text-decoration-none" data-bs-target="#myEditModal" id="editFile_{{ forloop.counter }}" data-filename="{{ file_name }}" data-username="{{ user }}">{{ user }}</button>
+                                {% endfor %}
+                            </td>
+                            <td>
+                                <div class="btn-group" role="group" aria-label="Basic mixed styles example">
+                                    <button type="button" class="btn btn-md btn-danger deleteFile me-4" data-bs-toggle="modal" data-bs-target="#deleteModal" id="deleteFile_{{ forloop.counter }}">
+                                        <span class="btn-label"><i class="fa-solid fa-trash"></i></span> Delete
+                                    </button>
+
+                                    {% if users|length_is:"2" %}
+                                    <button type="button" class="btn btn-md btn-primary compareFile" id="compareFile_{{ forloop.counter }}" data-filename="{{file_name}}">
+                                        <span class="btn-label"><i class="fa-solid fa-code-compare"></i></span> Compare
+                                    </button>
+                                    {% endif %}
+                                </div>
+
+                                <label for="" id="compare_file_container_{{ forloop.counter }}" class="ms-3"></label>
+                            </td>
+                            {% endif %}
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+            {% if request.user.is_superuser %}
+            <div class="mt-2 col-6 justify-content-center mx-5">
+                <!--<i class="fa-solid fa-bolt fa-lg mb-4"> Add & Remove Tag</i> <br>-->
+
+                <button type="button" class="btn btn-warning ms-3" id="btn_add_tag">
+                    <span class="btn-label"><i class="fa-solid fa-plus-minus"></i></span>
+                    <strong class="text-dark">Add/Remove Tag</strong>
+                </button> <br>
+                <div class="input-group input-group-md ms-3 my-4" id="add_tag_box" style="width: 50%;">
+                    <input type="text" class="form-control" id="in-tag-name" placeholder="Enter Tag Name" aria-label="tag-name" aria-describedby="btn-tag-name">
+                    <button class="btn btn-warning" type="button" id="btn-tag-name">
+                        <span class="btn-label"><i class="fa-solid fa-plus-minus"></i></span>
+                        Add/Remove Tag
+                    </button>
+                    <p id="add_remove_tag_status" class="mt-3"></p>
+                </div>
+            </div>
+            {% endif %}
+        </div>
+
+        <!-- RIGHT PART  -->
+        <div class="col-12">
+            <div class="container-fluid d-flex px-5 my-4 row" id="container" style="justify-content: space-around;">
+
+            </div>
+            <div class="container-fluid" id="myEditModal" style="justify-content: space-around;">
+                <!-- Edit file data and save -->
+                <form action="{% url 'upload' %}" method="post" enctype="multipart/form-data">
+                    {% csrf_token %}
+                    <div class="modal-header">
+                        <h5 class="modal-title"><span id="tfile_name" class="h6 text-primary"></span></h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" id="file-btn-close"></button>
+                    </div>
+                    <div class="container mt-3 px-5" id="edit_file_container">
+                        <!-- <div class="row mb-3">
+                            <div class="col-6">
+                                <div class="btn-toolbar" role="toolbar" aria-label="Toolbar with button groups">
+                                    <div class="btn-group " role="group" aria-label="First group">
+                                        <button type="button" class="btn btn-sm btn-primary colorBox" id="color_blue"></button>
+                                        <button type="button" class="btn btn-sm btn-secondary colorBox mx-1" id="color_gray"></button>
+                                        <button type="button" class="btn btn-sm btn-success colorBox" id="color_green"></button>
+                                        <button type="button" class="btn btn-sm btn-danger colorBox mx-1" id="color_red"></button>
+                                        <button type="button" class="btn btn-sm btn-warning colorBox" id="color_yellow"></button>
+                                        <button type="button" class="btn btn-sm btn-info colorBox mx-1" id="color_cyan"></button>
+                                        <button type="button" class="btn btn-sm btn-dark colorBox" id="color_black"></button>
+                                        <button type="button" class="btn btn-sm btn-outline-secondary colorBox mx-1" id="color_other">Other</button>
+                                        <button type="button" class="btn btn-sm btn-outline-secondary colorBox" id="color_remove">Remove</button>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-6">
+                                <div class="input-group input-group-sm" id="manual_color_box">
+                                    <input type="text" class="form-control" placeholder="#FFFFFF" aria-label="color-code" aria-describedby="btn-color-code" id="in_color_code" minlength="2" maxlength="7">
+                                    <button class="btn btn-outline-secondary colorBox" type="button" id="color_code">
+                                        <span class="btn-label"><i class="fa-sharp fa-solid fa-brush"></i></span>
+                                        Change
+                                    </button>
+                                </div>
+                            </div>
+                        </div> -->
+
+                        <div class="row">
+                            <div class="col-6">
+                                <!--<select id="multiple_tags" multiple name="select-tags" class="form-select mb-3" id="select-tag" placeholder="Select Tags" data-search="false" data-silent-initial-value-set="true">-->
+                                <!--    {% for tag in tags %}-->
+                                <!--    <option value="{{ tag|lower }}">{{ tag }}</option>-->
+                                <!--    {% endfor %}-->
+                                <!--</select>-->
+                                <!--<select id="multiple_tags" multiple name="select-tags" class="form-select mb-3" placeholder="Select Tags" data-search="false" data-silent-initial-value-set="true">-->
+                                <!--    {% for tag in tags %}-->
+                                <!--    <option value="{{ tag|lower }}">{{ tag }}</option>-->
+                                <!--    {% endfor %}-->
+                                <!--</select>-->
+                                <!--<p>Press "CTRL" Key and select tags</p>-->
+                                <div  id="select-tag" style="height:250px; overflow-y:scroll">
+
+                                              {% for tag in tags %}
+                                    <p><input type="checkbox" class="messagebox" name="select-tags" value="{{ tag|lower }}">{{ tag }}</p>
+                                    {% endfor %}
+</div>
+                            </div>
+                        </div>
+
+                        <div class="modal-header" style="display: inline-block;">
+                            <button type="button" class="btn btn-outline-primary" id="btn-tags">Add Tags</button>
+                            <button type="button" class="btn btn-outline-primary" id="remove-tags">Remove Tags</button>
+                            <button type="submit" class="btn btn-outline-primary">Save Changes</button>
+                        </div>
+                    </div>
+
+                    <div class="modal-body" style="height: 400px;overflow: scroll;">
+                        <span id="content" name="content">{{text|safe}}</span>
+                        <input type="text" name="file_name" id="file_name" value="" class="d-none">
+                        <input type="hidden" name="file_username" id="file_username" value="">
+                        <div class="form-group d-none">
+                            <textarea name="editor" id="editor" class="form-control" rows="10">{{text}}</textarea>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- UPLOAD FILE -->
+    <form action="{% url 'upload' %}" method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        <div id="myModal" class="modal" tabindex="-1">
+            <div class="modal-dialog">
+            <div class="modal-content">
+                    <div class="modal-header">
+                    <h5 class="modal-title">Upload File</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="input-group my-3">
+                        <div class="custom-file">
+                            <input type="file" class="custom-file-input" id="inputGroupFile01" name="textFile" accept=".txt">
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="submit" class="btn btn-primary">Upload</button>
+                </div>
+            </div>
+            </div>
+        </div>
+    </form>
+
+    <!-- Delete Modal -->
+    <div class="modal fade" id="deleteModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Delete File</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    If you want to delete a file "Click" on Yes, otherwise "Click" No.
+                    <input type="hidden" name="dfile_name" id="dfile_name" value="">
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">No</button>
+                    <button type="button" class="btn btn-primary" id="yesbutton">Yes</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    {% include 'messages.html' %}
+
+
+    <script>
+        $(document).ready(function () {
+            $.fn.extend({
+                toggleText: function(a, b){
+                    return this.text(this.text() == b ? a : b);
+                }
+            });
+
+            $(document).on("click", "#display_bars", function(){
+                $(this).toggleClass("fa-close");
+                $(this).toggleText(" Show Table", " Hide Table");
+                $("#table_id_wrapper").toggle()
+            });
+
+            $('#table_id').DataTable();
+
+
+            $("#myEditModal").hide();
+            $("#add_tag_box").hide();
+            $("#manual_color_box").hide();
+
+            $("#file-btn-close").click( ()=> {
+                // Hide myEditModal
+                $("#myEditModal").hide();
+            });
+
+            $("#cfile-btn-close").click( ()=> {
+                // Hide myCompareModal
+                $("#myCompareModal").hide();
+            });
+
+            $(document).on('click', '.compareUserFile', function(){
+                const username = $(this).attr('data-username');
+                const filename = $(this).attr('data-filename');
+                let mtitle = username + " => " + filename;
+
+                if ($(`#model_${username}`).html()) {
+
+                } else {
+                    $('#container').append(
+                        `<div class="col" id="model_${username}">
+                        <form action="{% url 'upload' %}" method="post" enctype="multipart/form-data">
+                        {% csrf_token %}
+                        <div class="modal-header">
+                            <h5 class="modal-title"><span id="" class="h6 text-primary">${mtitle} </span></h5>
+                            <button type="button" class="btn-close user_btn_close" data-bs-dismiss="modal" aria-label="Close" id="file-btn-close__${username}"></button>
+                        </div>
+                        <div class="container mt-3 px-5">
+                            <div class="row">
+                                <div class="col-6">
+                                    <select id="multiple_tags_${username}" multiple name="select-tags" class="form-select mb-3" id="select-tag" placeholder="Select Tags" data-search="false" data-silent-initial-value-set="true">
+                                        {% for tag in tags %}
+                                        <option value="{{ tag|lower }}">{{ tag }}</option>
+                                        {% endfor %}
+                                    </select>
+                                    <p>Press "CTRL" Key and select tags</p>
+                                </div>
+                                <div class="col-6">
+                                    <div class="" style="display: inline-grid;">
+                                        <button type="button" class="btn btn-outline-primary user_add_tag" data-username="${username}">Add Tags</button>
+                                        <button type="button" class="btn btn-outline-primary user_remove_tag my-1" data-username="${username}">Remove Tags</button>
+                                        <button type="submit" class="btn btn-outline-primary">Save Changes</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="modal-body" style="height: 400px;overflow: scroll;">
+                            <span id="content_${username}" name="content">{{text|safe}}</span>
+                            <input type="text" name="file_name" id="file_name_${username}" value="" class="d-none">
+                            <input type="hidden" name="file_username" id="file_username_${username}" value="">
+                            <div class="form-group d-none">
+                                <textarea name="editor" id="editor_${username}" class="form-control" rows="10">{{text}}</textarea>
+                            </div>
+                        </div>
+                    </form>
+                    </div>
+                        `
+                    )
+
+                    readFileData(filename, username);
+                }
+            });
+
+            $(document).on('click', '.user_btn_close', function(){
+                const btn_id = $(this).attr('id');
+                const username = btn_id.replace('file-btn-close__', '');
+                $(`#model_${username}`).remove();
+            });
+
+            // Get the ID of button when they clicked
+            $(document).on('click', ".editFile", function() {
+                let button_id = $(this).attr("id");
+                let row_no = button_id.replace("editFile_", "");
+                console.log($(this).attr("data-filename"), $(this).attr("data-username"));
+                let file_name = $(this).attr("data-filename");
+                let file_username = $(this).attr("data-username");
+                //$("#fileName_"+row_no).text();
+                // console.log(file_name)
+
+                readFileData(file_name, file_username);
+                "{% if request.user.is_superuser %}"
+                    $('#edit_file_container').hide()
+                "{% else %}"
+                    $('#edit_file_container').show()
+                "{% endif %}"
+
+                //
+                $("#tfile_name").html(`${file_username} => ${file_name}`);
+                // Show myEditModal
+                $("#myEditModal").show();
+            });
+
+            // Compare Button
+            $(document).on("click", ".compareFile", function() {
+                let button_id = $(this).attr("id");
+                let row_no = button_id.replace("compareFile_", "");
+                let file_name = $(this).attr("data-filename");//$("#fileName_"+row_no).text();
+
+                $("#myCompareModal").children().find("span").html(file_name)
+
+                compareFile(file_name, row_no)
+
+            });
+
+            // Get the ID of button when they clicked
+            $("#select-tag").click(function() {
+                let tag_name = $("#select-tag").val()
+                if(tag_name == "other"){
+                    $("#add_tag_box").show();
+                } else if(tag_name == "") {
+                    $("#add_tag_box").hide();
+                } else {
+                    $("#add_tag_box").hide();
+                    addTag(tag_name)
+                }
+            });
+
+            $('#btn_add_tag').click(function(){
+                $('#add_tag_box').toggle();
+            })
+
+            $('#btn-tags').click(function(){
+                // tags = $(".vscomp-value").html()
+                //tags = $('#multiple_tags').val();//$("input:hidden[name='select-tags']").val();
+                 var tags = [];
+                $.each($("input[name='select-tags']:checked"), function(){
+               tags.push($(this).val());
+                });
+                console.log(tags)
+                if(tags != "Select Tags"){
+                    addTag(tags, '')
+                }
+            });
+
+            $(document).on('click', '.user_add_tag', function(){
+                const username = $(this).attr('data-username')
+                tags = $(`#multiple_tags_${username}`).val();
+                addTag(tags, username)
+            });
+
+            $('#remove-tags').click(function(){
+                tags = 'remove'
+                addTag(tags, '')
+            });
+
+            $(document).on('click', '.user_remove_tag', function(){
+                const username = $(this).attr('data-username')
+                tags = 'remove'
+                addTag(tags, username)
+            });
+
+            // Get the ID of button when they clicked
+            $(".deleteFile").click(function() {
+                let button_id = $(this).attr("id");
+                let row_no = button_id.replace("deleteFile_", "");
+                let file_name = $("#fileName_"+row_no).text();
+                console.log(file_name);
+                $('#dfile_name').val(file_name)
+            });
+
+            $("#yesbutton").click(function() {
+                let file_name = $('#dfile_name').val();
+                console.log(file_name);
+
+                // Delete file
+                deleteFile(file_name)
+            });
+
+            $("#btn-tag-name").click(function() {
+                tag_name = $("#in-tag-name").val()
+                // console.log(tag_name)
+                addTagName(tag_name)
+            });
+
+
+            document.oncontextmenu = rightClick;
+
+            function rightClick(e) {
+                e.preventDefault();
+            }
+
+            $(".colorBox").click(function() {
+                let button_id = $(this).attr("id");
+                let color_name = button_id.replace("color_", "");
+
+                if(color_name == "other"){
+                    $("#manual_color_box").toggle();
+                } else if (color_name == "code"){
+                    color_code = $("#in_color_code").val();
+                    if (color_code.length < 2 || color_code.length > 7){
+                        alert("Color code should be in between 2-digit or 7-digit");
+                    } else {
+                        changeColor(color_code);
+                    }
+                } else {
+                    changeColor(color_name);
+                    $("#manual_color_box").hide();
+                }
+            });
+
+            function changeColor(color) {
+                try{
+                    //// Get Selection
+                    sel = window.getSelection();
+                    if (sel.rangeCount && sel.getRangeAt) {
+                        range = sel.getRangeAt(0);
+                    }
+
+                    //// Set design mode to on
+                    document.designMode = "on";
+                    if (range) {
+                        sel.removeAllRanges();
+                        sel.addRange(range);
+                    }
+
+                    if(sel.toString()){
+                        //// Colorize text
+                        if(color == "remove"){
+                            document.execCommand("backColor", false, "white");
+                        } else {
+                            document.execCommand("backColor", false, color);
+                            // if (color !== "yellow") {
+                            //     document.execCommand("foreColor", false, "white");
+                            // }
+                        }
+                    }
+
+                    //// Set design mode to off
+                    document.designMode = "off";
+
+                    $("#editor").val($("#content").html())
+                } catch(error) {
+                    console.log()
+                }
+            }
+
+            function addTag(tag_name, username) {
+                try{
+                    //// Get Selection
+                    sel = window.getSelection();
+                    if (sel.rangeCount && sel.getRangeAt) {
+                        range = sel.getRangeAt(0);
+                    }
+
+                    // Set design mode to on
+                    document.designMode = "on";
+
+                    if (range) {
+                        sel.removeAllRanges();
+                        sel.addRange(range);
+                    }
+
+                    if(sel.toString()){
+                        let replce_text = sel.toString();
+
+                        if(tag_name == "remove"){
+                            replace_text=`${sel.toString()}`;
+                           // replce_text =  `<span class="bg-white">${sel.toString()}</span>`;
+                        } else {
+                          replce_text = `<span title="${tag_name}" style="background-color: #FF0000;">${sel.toString()}</span>`;
+                        }
+                        document.execCommand("insertHTML", false, replce_text);
+                    }
+
+                    // Set design mode to off
+                    document.designMode = "off";
+
+                    username ? $(`#editor_${username}`).val($(`#content_${username}`).html()) : $("#editor").val($("#content").html());
+
+                } catch(error) {
+                    console.log()
+                }
+            }
+
+            // Get file contents through ajax call
+            function readFileData(file_name, username) {
+                setTimeout(()=>{
+                    let $crf_token = "{{ csrf_token }}";
+                    $.ajax({
+                        type:"GET",
+                        url: "/read/"+file_name+"/" + username +"/",
+                        headers:{"X-CSRFToken": $crf_token},
+                        success: function(res){
+                            "{% with request.user as currentuser %}"
+                                if (username == "{{currentuser}}" ) {
+                                    $("#content").html(res);
+                                    $("#editor").val(res);
+                                    $("#file_name").val(file_name);
+                                    $("#file_username").val(username);
+                                } else {
+                                    $(`#content_${username}`).html(res);
+                                    $(`#editor_${username}`).val(res);
+                                    $(`#file_name_${username}`).val(file_name);
+                                    $(`#file_username_${username}`).val(username);
+                                }
+                            "{% endwith %}"
+                        }
+                    })
+                }, 0);
+            }
+
+            // Delete file through ajax call
+            function deleteFile(file_name) {
+                setTimeout(()=>{
+                    let $crf_token = "{{ csrf_token }}";
+                    $.ajax({
+                        type:"GET",
+                        url: "/delete/"+file_name+"/",
+                        headers:{"X-CSRFToken": $crf_token},
+                        success: function(res){
+                            console.log('File Deleted.')
+                            location.reload();
+                        }
+                    })
+                }, 0);
+            }
+
+
+            // Get file contents through ajax call
+            function addTagName(tag_name) {
+                setTimeout(()=>{
+                    let $crf_token = "{{ csrf_token }}";
+                    $.ajax({
+                        type:"POST",
+                        url: "/tag/"+tag_name+"/",
+                        headers:{"X-CSRFToken": $crf_token},
+                        success: function(res){
+                            // console.log(res)
+                            $("#select-tag").append(`<option value="${tag_name.toLowerCase()}">
+                                       ${tag_name}
+                                  </option>`);
+                            $("#in-tag-name").val("")
+                            $("#add_remove_tag_status").text(`Successfully Added or Removed "${tag_name}".`)
+                        }
+                    })
+                }, 0);
+            }
+
+            // Compare file contents through ajax call
+            function compareFile(file_name, row_no) {
+                setTimeout(()=>{
+                    let $crf_token = "{{ csrf_token }}";
+                    $.ajax({
+                        type:"GET",
+                        url: "/compare/"+file_name+"/",
+                        headers:{"X-CSRFToken": $crf_token},
+                        success: function(res){
+                            $(`#compare_file_container_${row_no}`).html(res)
+                        }
+                    })
+                }, 0);
+            }
+
+        });
+    </script>
+
+{% endblock content%}
+
+{% block extra_script %}
+<script src="{% static 'js/virtual-select.min.js' %}"></script>
+<script>
+    $(document).ready(function() {
+            // VirtualSelect.init({
+            //     ele: '#multiple_tags',
+            //     // options: myOptions
+            // });
+    });
+</script>
+{% endblock %}

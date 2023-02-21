@@ -1,0 +1,68 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block content%}
+
+<div class="container my-5">
+	<!-- d-flex align-items-center justify-content-end-->
+	<form action="{% url 'login' %}" method="post" class="d-flex justify-content-center g-3 needs-validation"
+		novalidate>
+		{% csrf_token %}
+		<div class="row col-sm-8 col-lg-4">
+			<div class="input-group mb-3">
+				<span class="input-group-text" id="inputGroupUsername">
+					<i class="fa-solid fa-user"></i>
+				</span>
+				<input type="text" class="form-control" name="username" placeholder="Username"
+					aria-label="EmailAddress" aria-describedby="inputGroupEmail" value="" required>
+				<!-- <div class="valid-feedback">Looks good!</div> -->
+				<div class="invalid-feedback">
+					Please choose a username.
+				</div>
+			</div>
+			<div class="input-group mb-3">
+				<span class="input-group-text" id="inputGroupPassword">
+					<i class="fa-solid fa-lock"></i>
+				</span>
+				<input type="password" class="form-control" name="password" value="" placeholder="Password"
+					aria-label="Password" aria-describedby="inputGroupPassword" required>
+				<!-- <div class="valid-feedback">Looks good!</div> -->
+				<div class="invalid-feedback">
+					Please choose a password.
+				</div>
+			</div>
+			<div class="input-group mb-3 d-flex justify-content-center">
+				<span class="input-group-text" id="basic-addon1">
+					<i class="fa-solid fa-right-to-bracket"></i>
+				</span>
+				<button class="btn btn-success" type="submit">Login</button>
+			</div>
+		</div>
+	</form>
+</div>
+
+
+<script>
+	// Example starter JavaScript for disabling form submissions if there are invalid fields
+	(function () {
+		'use strict';
+		window.addEventListener('load', function () {
+			// Fetch all the forms we want to apply custom Bootstrap validation styles to
+			var forms = document.getElementsByClassName('needs-validation');
+			// Loop over them and prevent submission
+			var validation = Array.prototype.filter.call(forms, function (form) {
+				form.addEventListener('submit', function (event) {
+					if (form.checkValidity() === false) {
+						event.preventDefault();
+						event.stopPropagation();
+					}
+					form.classList.add('was-validated');
+				}, false);
+			});
+		}, false);
+	})();
+</script>
+
+{% include 'messages.html' %}
+
+{% endblock %}

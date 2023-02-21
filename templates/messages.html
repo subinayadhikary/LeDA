@@ -1,0 +1,25 @@
+{% if messages %}
+<div class="toast-container position-fixed bottom-0 end-0 p-3" style="z-index: 11">
+    {% for message in messages %}
+    <div class="toast shadow" role="alert" aria-live="assertive" aria-atomic="true">
+        <div class="toast-header bg-dark text-white">
+            <i class="fa-solid fa-bell rounded me-2"></i>
+            <!-- <img src="..." class="rounded me-2" alt="..."> -->
+            <strong class="me-auto">Notification</strong>
+            <small class="text-muted">just now</small>
+            <button type="button" class="btn-close bg-white" data-bs-dismiss="toast" aria-label="Close"></button>
+        </div>
+        <div class="toast-body">
+            <strong>{{ message }}</strong>
+        </div>
+    </div>
+    {% endfor %}
+</div>
+{% endif %}
+
+<script>
+    $(document).ready(()=>{
+        $('.toast').toast({delay:5000});
+        $('.toast').toast("show");
+    });
+</script>
