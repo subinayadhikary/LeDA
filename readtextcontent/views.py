@@ -492,8 +492,8 @@ def compareFile(file_name):
                                   partial=partial+1
                                 else:
                                    missing=missing+1
-            recall=(correct+0.5*partial)/(correct+partial+missing+0.1)
-            precision=(correct+0.5*partial)/(correct+partial+missing+0.1)
+            recall=(correct+0.5*partial)/(correct+partial+missing)
+            precision=(correct+0.5*partial)/(correct+partial+missing)
             try:
                 f_score=(2*recall*precision)/(recall+precision)
                 f_score=round(f_score,2)
