@@ -15,8 +15,7 @@ When culpable homicide is not murder. <br />
 304B. Dowry death. <br />
 305. Abetment of suicide of child or insane person. <br />
 306. Abetment of suicide. <br />
-307. Attempt to murder. <br />
-Attempts by life-convicts. <br />
+307. Attempt to murder. Attempts by life-convicts. <br />
 308. Attempt to commit culpable homicide. <br />
 309. Attempt to commit suicide. <br />
 310. Thug. <br />
