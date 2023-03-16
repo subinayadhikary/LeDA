@@ -1,6 +1,6 @@
 # Annotation-tool
 # Details of IPC
-As we mentioned in this paper, we considered on IPC 302 (Punishment for murder) and some similar IPCs such as IPC 299 , IPC 300 , IPC 307. Prticularly we have considered section 299 to section 311 of IPC that is basically "of offences affteing the human body". In Indian Penal Code, 511 sections are there and 23 chapters are there. Here we focused on Chapter XVI. <br/>
+As we mentioned in this paper, we considered on IPC 302 (Punishment for murder) and some similar IPCs such as IPC 299 , IPC 300 , IPC 307. Prticularly we have considered section 299 to section 311 of IPC that is basically "of offences affteing the human body" and we have discussed all of them briefly. In Indian Penal Code, 511 sections are there and 23 chapters are there. Here we focused on Chapter XVI. <br/>
                                              # CHAPTER XVI   <br />
                                      **OF OFFENCESAFFECTINGTHE HUMAN BODY**  <br />
                                          *Of offences affecting life* <br/>
