@@ -21,4 +21,5 @@ When culpable homicide is not murder. <br />
 310. Thug. <br />
 311. Punishment <br />
 For getting more details about the Indian Penal Code, you may visit https://legislative.gov.in/sites/default/files/A1860-45.pdf.  <br />
-# The preview of our tool is available at https://drive.google.com/drive/folders/1Q1UERCzxrMWjfD7pb_45w9YdLVTDYz53?usp=sharing.
+# Demo presentation of our tool
+The preview of our tool is available at https://drive.google.com/drive/folders/1Q1UERCzxrMWjfD7pb_45w9YdLVTDYz53?usp=sharing.
