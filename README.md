@@ -1,8 +1,8 @@
 # Annotation-tool
 # Details of IPC
-As we mentioned in this paper, we considered on IPC 302 (Punishment for murder) and some similar IPCs such as IPC 299 , IPC 300 , IPC 307. Prticularly we have considered section 299 to section 311 of IPC that is basically "of offences affteing the human body" and we have discussed all of them briefly. In Indian Penal Code, 511 sections are there and 23 chapters are there. Here we focused on Chapter XVI. <br/>
+As we mentioned in this paper, we considered on IPC 302 (Punishment for murder) and some similar IPCs such as IPC 299 , IPC 300 , IPC 307. Particularly we have considered section 299 to section 311 of IPC that is basically "of offences affteing the human body" and we have discussed all of them briefly. In Indian Penal Code, 511 sections are there and 23 chapters are there. Here we focused on Chapter XVI. <br/>
                                              **CHAPTER XVI**   <br />
-                                     ***OF OFFENCESAFFECTINGTHE HUMAN BODY***  <br />
+                                     ***OF OFFENCES AFFECTING THE HUMAN BODY***  <br />
                                          *Of offences affecting life* <br/>
 *299.* **Culpable homicide.** <br />
 *300.* **Murder.** <br />
@@ -21,7 +21,7 @@ As we mentioned in this paper, we considered on IPC 302 (Punishment for murder) 
 *310.* **Thug- Whoever, at any time after the passing of this Act, shall have been habitually associated
 with any other or others for the purpose of committing robbery or child-stealing by means of or
 accompanied with murder, is a thug.** <br />
-*311.* **Punishment- Whoever is a thug, shall be punished with 4[imprisonment for life], and shall also
+*311.* **Punishment- Whoever is a thug, shall be punished with 4 [imprisonment for life], and shall also
 be liable to fine.** <br />
 For getting more details about the Indian Penal Code, you may visit https://legislative.gov.in/sites/default/files/A1860-45.pdf.  <br />
 # Demo of our tool
