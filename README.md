@@ -5,7 +5,7 @@ As we mentioned in this paper, we considered on IPC 302 (Punishment for murder) 
                                      ***OF OFFENCES AFFECTING THE HUMAN BODY***  <br />
                                          *Of offences affecting life* <br/>
 *299.* **Culpable homicide.** <br />
-*300.* **Murder.** <br />
+*300.* **Murder.** <br/>
 **When culpable homicide is not murder.** <br />
 *301.* **Culpable homicide by causing death of person other than person whose death was intended.** <br />
 *302.* **Punishment for murder.** <br />
@@ -18,9 +18,9 @@ As we mentioned in this paper, we considered on IPC 302 (Punishment for murder) 
 *307.* **Attempt to murder. Attempts by life-convicts.** <br />
 *308.* **Attempt to commit culpable homicide.** <br />
 *309.* **Attempt to commit suicide.** <br />
-*310.* **Thug- Whoever, at any time after the passing of this Act, shall have been habitually associated
+*310.* **Thug**- Whoever, at any time after the passing of this Act, shall have been habitually associated
 with any other or others for the purpose of committing robbery or child-stealing by means of or
-accompanied with murder, is a thug.** <br />
+accompanied with murder, is a thug. <br />
 *311.* **Punishment- Whoever is a thug, shall be punished with 4 [imprisonment for life], and shall also
 be liable to fine.** <br />
 For getting more details about the Indian Penal Code, you may visit https://legislative.gov.in/sites/default/files/A1860-45.pdf.  <br />
