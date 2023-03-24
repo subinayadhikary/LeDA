@@ -21,8 +21,8 @@ As we mentioned in this paper, we considered on IPC 302 (Punishment for murder) 
 *310.* **Thug**- Whoever, at any time after the passing of this Act, shall have been habitually associated
 with any other or others for the purpose of committing robbery or child-stealing by means of or
 accompanied with murder, is a thug. <br />
-*311.* **Punishment- Whoever is a thug, shall be punished with 4 [imprisonment for life], and shall also
-be liable to fine.** <br />
+*311.* **Punishment**- Whoever is a thug, shall be punished with 4 [imprisonment for life], and shall also
+be liable to fine. <br />
 For getting more details about the Indian Penal Code, you may visit https://legislative.gov.in/sites/default/files/A1860-45.pdf.  <br />
 # Demo of our tool
 The preview of our tool is available at https://drive.google.com/drive/folders/1Q1UERCzxrMWjfD7pb_45w9YdLVTDYz53?usp=sharing.
