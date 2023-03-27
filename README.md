@@ -5,8 +5,7 @@ As we mentioned in this paper, we considered on IPC 302 (Punishment for murder) 
                                      ***OF OFFENCES AFFECTING THE HUMAN BODY***  <br />
                                          *Of offences affecting life* <br/>
 - *299.* **Culpable homicide.** <br />
-- *300.* **Murder.** <br/>
-**When culpable homicide is not murder.** <br />
+- *300.* **Murder.** **When culpable homicide is not murder.** <br />
 - *301.* **Culpable homicide by causing death of person other than person whose death was intended.** <br />
 - *302.* **Punishment for murder.** <br />
 - *303.* **Punishment for murder by life-convict.** <br />
