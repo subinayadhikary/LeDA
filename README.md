@@ -25,3 +25,7 @@ be liable to fine. <br />
 For getting more details about the Indian Penal Code, you may visit https://legislative.gov.in/sites/default/files/A1860-45.pdf.  <br />
 # Demo of our tool
 The preview of our tool is available at https://drive.google.com/drive/folders/1Q1UERCzxrMWjfD7pb_45w9YdLVTDYz53?usp=sharing.
+
+
+https://user-images.githubusercontent.com/50978159/227902907-821786d7-82a6-4046-b71d-6f7759e0e0d8.mp4
+
