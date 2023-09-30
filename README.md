@@ -27,4 +27,5 @@ For getting more details about the Indian Penal Code, you may visit https://legi
 The preview of our tool is available at https://drive.google.com/drive/folders/1Q1UERCzxrMWjfD7pb_45w9YdLVTDYz53?usp=sharing.
 
 
+![img_3](https://github.com/subinayadhikary/LeDA/assets/50978159/bc06a779-6665-4221-bbfb-e803583039e2)
 
