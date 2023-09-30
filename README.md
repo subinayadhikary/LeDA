@@ -3,9 +3,10 @@
 As we mentioned in this paper, we considered IPC 302 (Punishment for Murder) and some similar IPCs such as IPC 299, IPC 300, and IPC 307. Particularly we have considered section 299 to section 311 of IPC which is basically "of offenses affecting the human body" and we have discussed all of them briefly. In the Indian Penal Code (IPC), 511 sections are there and 23 chapters are there. Here we focused on Chapter XVI. <br/>
 ![ipc_3](https://github.com/subinayadhikary/LeDA/assets/50978159/e1f6674a-938a-4060-b0e6-a98054251c67)
 
-                                             **CHAPTER XVI**   <br />
-                                     ***OF OFFENCES AFFECTING THE HUMAN BODY***  <br />
-                                         *Of offences affecting life* <br/>
+                                           <!--  **CHAPTER XVI**   <br /> -->
+                                  <!--     ***OF OFFENCES AFFECTING THE HUMAN BODY***  <br /> -->
+                                        <!--   *Of offences affecting life* <br/> -->
+# Indian Penal Code (IPC) section details
 - *299.* **Culpable homicide.** <br />
 - *300.* **Murder.** **When culpable homicide is not murder.** <br />
 - *301.* **Culpable homicide by causing death of person other than person whose death was intended.** <br />
