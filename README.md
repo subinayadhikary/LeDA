@@ -29,7 +29,6 @@ Here we have mentioned all the features of LeDA by highlighting them. <br />
 'A': **is used to upload documents**; 'B': **selects a document from a list**; 'C': **indicates that the document is annotated by both the annotators**; 'D': **indicates the IAA score**; 'E': **computes the IAA score**; 'F': **button to delete a document**; 'G': **button to add new a tag**; 'H': **selected document**; 'I': **set of tags**; 'J': **search documents tag-wise**; 'K': **buttons to add, remove or save the highlighted span and labels**; 'L': **highlighted span**; 'M': **label for highlighted span**; 'N': **search a document**.
 
 # 4. The LeDA demo
-The preview of our tool is available at https://drive.google.com/drive/folders/1Q1UERCzxrMWjfD7pb_45w9YdLVTDYz53?usp=sharing.
-
+The preview of our tool is available at https://tinyurl.com/annotationtool.
 
 
