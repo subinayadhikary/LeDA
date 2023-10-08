@@ -5,7 +5,7 @@ In this study, we delve into Supreme Court documents from the Indian judiciary, 
 As we mentioned in this paper, we considered IPC 302 (Punishment for Murder) and some similar IPCs such as IPC 299, IPC 300, and IPC 307, and most importantly highest number of cases are related to murder, as shown in the following figure. In particular, we have considered section 299 to section 311 of IPC which is basically "of offenses affecting the human body" and we have discussed all of them briefly in Section 2.  <br/>
 ![ipc_3](https://github.com/subinayadhikary/LeDA/assets/50978159/e1f6674a-938a-4060-b0e6-a98054251c67)
 # 2. Indian Penal Code (IPC) section details
-- *299.* **Culpable homicide.** <br />
+- *299.* [**Culpable homicide.**] (https://github.com/subinayadhikary/LeDA/blob/main/IPC_299) <br />
 - *300.* **Murder.** **When culpable homicide is not murder.** <br />
 - *301.* **Culpable homicide by causing death of person other than person whose death was intended.** <br />
 - *302.* **Punishment for murder.** <br />
