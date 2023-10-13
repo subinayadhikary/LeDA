@@ -7,22 +7,19 @@ As we mentioned in this paper, we considered IPC 302 (Punishment for Murder) and
 # 2. Indian Penal Code (IPC) section details
 - *299.* [**Culpable homicide.**](https://github.com/subinayadhikary/LeDA/blob/main/IPC_Sections/IPC_299.md) <br />
 - *300.* [**Murder.**](https://github.com/subinayadhikary/LeDA/blob/main/IPC_Sections/IPC_300.md) <br />
-- *301.* **Culpable homicide by causing death of person other than person whose death was intended.** <br />
-- *302.* **Punishment for murder.** <br />
-- *303.* **Punishment for murder by life-convict.** <br />
-- *304.* **Punishment for culpable homicide not amounting to murder.** <br />
-- *304A.* **Causing death by negligence.** <br />
-- *304B.* **Dowry death.** <br />
-- *305.* **Abetment of suicide of child or insane person.** <br />
-- *306.* **Abetment of suicide.** <br />
-- *307.* **Attempt to murder. Attempts by life-convicts.** <br />
-- *308.* **Attempt to commit culpable homicide.** <br />
-- *309.* **Attempt to commit suicide.** <br />
-- *310.* **Thug**- Whoever, at any time after the passing of this Act, shall have been habitually associated
-with any other or others for the purpose of committing robbery or child-stealing by means of or
-accompanied with murder, is a thug. <br />
-- *311.* **Punishment**- Whoever is a thug, shall be punished with 4 [imprisonment for life], and shall also
-be liable to fine. <br />
+- *301.* [**Culpable homicide by causing death of person other than person whose death was intended.**](https://github.com/subinayadhikary/LeDA/blob/main/IPC_Sections/IPC_301.md) <br />
+- *302.* [**Punishment for murder.**](https://github.com/subinayadhikary/LeDA/blob/main/IPC_Sections/IPC_302.md) <br />
+- *303.* [**Punishment for murder by life-convict.**](https://github.com/subinayadhikary/LeDA/blob/main/IPC_Sections/IPC_303.md) <br />
+- *304.* [**Punishment for culpable homicide not amounting to murder.**](https://github.com/subinayadhikary/LeDA/blob/main/IPC_Sections/IPC_304.md) <br />
+- *304A.* [**Causing death by negligence.**](https://github.com/subinayadhikary/LeDA/blob/main/IPC_Sections/IPC_304A.md) <br />
+- *304B.* [**Dowry death.**](https://github.com/subinayadhikary/LeDA/blob/main/IPC_Sections/IPC_304B.md) <br />
+- *305.* [**Abetment of suicide of child or insane person.**](https://github.com/subinayadhikary/LeDA/blob/main/IPC_Sections/IPC_305.md) <br />
+- *306.* [**Abetment of suicide.**](https://github.com/subinayadhikary/LeDA/blob/main/IPC_Sections/IPC_306.md) <br />
+- *307.* [**Attempt to murder. Attempts by life-convicts.**](https://github.com/subinayadhikary/LeDA/blob/main/IPC_Sections/IPC_307.md) <br />
+- *308.* [**Attempt to commit culpable homicide.**](https://github.com/subinayadhikary/LeDA/blob/main/IPC_Sections/IPC_308.md) <br />
+- *309.* [**Attempt to commit suicide.**](https://github.com/subinayadhikary/LeDA/blob/main/IPC_Sections/IPC_309.md) <br />
+- *310.* [**Thug**](https://github.com/subinayadhikary/LeDA/blob/main/IPC_Sections/IPC_310.md) <br />
+- *311.* [**Punishment**](https://github.com/subinayadhikary/LeDA/blob/main/IPC_Sections/IPC_311.md)<br />
 For getting more details about the Indian Penal Code, you may visit https://legislative.gov.in/sites/default/files/A1860-45.pdf.  <br />
 # 3. Interface of LeDA
 ![img_3](https://github.com/subinayadhikary/LeDA/assets/50978159/bc06a779-6665-4221-bbfb-e803583039e2)
