@@ -13,7 +13,7 @@ As we mentioned in this paper, we considered IPC 302 (Punishment for Murder) and
 - *304.* [**Punishment for culpable homicide not amounting to murder.**](https://github.com/subinayadhikary/LeDA/blob/main/IPC_Sections/IPC_304.md) <br />
 - *304A.* [**Causing death by negligence.**](https://github.com/subinayadhikary/LeDA/blob/main/IPC_Sections/IPC_304A.md) <br />
 - *304B.* [**Dowry death.**](https://github.com/subinayadhikary/LeDA/blob/main/IPC_Sections/IPC_304B.md) <br />
-- *305.* [**Abetment of suicide of child or insane person.**](https://github.com/subinayadhikary/LeDA/blob/main/IPC_Sections/IPC_305) <br />
+- *305.* [**Abetment of suicide of child or insane person.**](https://github.com/subinayadhikary/LeDA/blob/main/IPC_Sections/IPC_305.md) <br />
 - *306.* [**Abetment of suicide.**](https://github.com/subinayadhikary/LeDA/blob/main/IPC_Sections/IPC_306.md) <br />
 - *307.* [**Attempt to murder. Attempts by life-convicts.**](https://github.com/subinayadhikary/LeDA/blob/main/IPC_Sections/IPC_307.md) <br />
 - *308.* [**Attempt to commit culpable homicide.**](https://github.com/subinayadhikary/LeDA/blob/main/IPC_Sections/IPC_308.md) <br />
