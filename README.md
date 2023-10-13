@@ -6,7 +6,7 @@ As we mentioned in this paper, we considered IPC 302 (Punishment for Murder) and
 ![ipc_3](https://github.com/subinayadhikary/LeDA/assets/50978159/e1f6674a-938a-4060-b0e6-a98054251c67)
 # 2. Indian Penal Code (IPC) section details
 - *299.* [**Culpable homicide.**](https://github.com/subinayadhikary/LeDA/blob/main/IPC_Sections/IPC_299.md) <br />
-- *300.* **Murder.** **When culpable homicide is not murder.** <br />
+- *300.* [**Murder.**](https://github.com/subinayadhikary/LeDA/blob/main/IPC_Sections/IPC_300.md) <br />
 - *301.* **Culpable homicide by causing death of person other than person whose death was intended.** <br />
 - *302.* **Punishment for murder.** <br />
 - *303.* **Punishment for murder by life-convict.** <br />
