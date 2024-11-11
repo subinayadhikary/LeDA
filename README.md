@@ -28,5 +28,17 @@ Here we have mentioned all the features of LeDA by highlighting them. <br />
 
 # 4. The LeDA demo
 The preview of our tool is available at https://tinyurl.com/annotationtool.
+# 5. Citations
+```ruby
+@article{adhikary2023leda,
+  title={LeDA: a system for legal data annotation},
+  author={Adhikary, Subinay and Roy, Dwaipayan and Ganguly, Debasis and Kumar Guha, Shouvik and Ghosh, Kripabandhu},
+  journal={Frontiers in Artificial Intelligence and Applications},
+  number={379},
+  pages={370--367},
+  year={2023},
+  publisher={IOS Press}
+}
+```
 
 
